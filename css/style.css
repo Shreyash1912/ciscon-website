@@ -1,0 +1,1330 @@
+/********** Template CSS **********/
+:root {
+    --primary: #EF4444; /* Accent Red */
+    --light: #111827; /* Dark Gray for cards */
+    --dark: #0B0F19; /* Deep Cinematic Black */
+}
+
+/* =========================================
+   UNIVERSAL VIEWPORT OVERFLOW FIX
+   Locks down the horizontal axis immediately
+   ========================================= */
+html, body {
+    overflow-x: hidden !important; /* Eradicates side-scrolls */
+    width: 100vw;
+    max-width: 100%;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.fw-medium {
+    font-weight: 600 !important;
+}
+
+.fw-semi-bold {
+    font-weight: 700 !important;
+}
+
+.back-to-top {
+    position: fixed;
+    display: none;
+    right: 45px;
+    bottom: 45px;
+    z-index: 99;
+}
+
+
+/*** Spinner ***/
+#spinner {
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity .5s ease-out, visibility 0s linear .5s;
+    z-index: 99999;
+}
+
+#spinner.show {
+    transition: opacity .5s ease-out, visibility 0s linear 0s;
+    visibility: visible;
+    opacity: 1;
+}
+
+
+/*** Button ***/
+.btn {
+    font-family: 'Nunito', sans-serif;
+    font-weight: 600;
+    transition: .5s;
+}
+
+.btn.btn-primary,
+.btn.btn-secondary {
+    color: #FFFFFF;
+}
+
+.btn-square {
+    width: 38px;
+    height: 38px;
+}
+
+.btn-sm-square {
+    width: 32px;
+    height: 32px;
+}
+
+.btn-lg-square {
+    width: 48px;
+    height: 48px;
+}
+
+.btn-square,
+.btn-sm-square,
+.btn-lg-square {
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: normal;
+    border-radius: 0px;
+}
+
+
+/*** Navbar ***/
+.navbar .dropdown-toggle::after {
+    border: none;
+    content: "\f107";
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    vertical-align: middle;
+    margin-left: 8px;
+}
+
+.navbar-light .navbar-nav .nav-link {
+    margin-right: 30px;
+    padding: 25px 0;
+    color: #FFFFFF;
+    font-size: 15px;
+    text-transform: uppercase;
+    outline: none;
+}
+
+.navbar-light .navbar-nav .nav-link:hover,
+.navbar-light .navbar-nav .nav-link.active {
+    color: var(--primary);
+}
+
+@media (max-width: 991.98px) {
+    .navbar-light .navbar-nav .nav-link  {
+        margin-right: 0;
+        padding: 10px 0;
+    }
+
+    .navbar-light .navbar-nav {
+        border-top: 1px solid #EEEEEE;
+    }
+}
+
+.navbar-light .navbar-brand,
+.navbar-light a.btn {
+    height: 75px;
+}
+
+.navbar-light .navbar-nav .nav-link {
+    color: var(--dark);
+    font-weight: 500;
+}
+
+.logo-img {
+    height: 90px;
+    width: auto;
+    object-fit: contain;
+    transition: all 0.3s ease;
+}
+
+@media (max-width: 991.98px) {
+    .logo-img {
+        height: 35px;
+    }
+}
+
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1050;
+
+    background-color: rgba(11, 15, 25, 0.75) !important; /* Slightly more transparent */
+    backdrop-filter: blur(15px); /* Stronger premium blur */
+    -webkit-backdrop-filter: blur(15px);
+
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1); /* Subtle premium border */
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5); /* Stronger depth shadow */
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@media (min-width: 992px) {
+    .navbar .nav-item .dropdown-menu {
+        display: block;
+        margin-top: 0;
+        opacity: 0;
+        visibility: hidden;
+        transition: .5s;
+    }
+
+    .navbar .dropdown-menu.fade-down {
+        top: 100%;
+        transform: rotateX(-75deg);
+        transform-origin: 0% 0%;
+    }
+
+    .navbar .nav-item:hover .dropdown-menu {
+        top: 100%;
+        transform: rotateX(0deg);
+        visibility: visible;
+        transition: .5s;
+        opacity: 1;
+    }
+}
+
+
+
+/*** Header carousel ***/
+@media (max-width: 768px) {
+    .header-carousel .owl-carousel-item {
+        position: relative;
+        min-height: 500px;
+    }
+    
+    .header-carousel .owl-carousel-item img {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+}
+
+.header-carousel .owl-nav {
+    position: absolute;
+    bottom: 8%;
+    right: 8%;
+    display: flex;
+    flex-direction: row;
+    gap: 15px;
+    z-index: 10;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+    .header-carousel .owl-nav {
+        bottom: 5%;
+        right: 50%;
+        transform: translateX(50%); /* Bottom center on mobile to avoid overlapping left-aligned text */
+    }
+}
+
+.header-carousel .owl-nav .owl-prev,
+.header-carousel .owl-nav .owl-next {
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #FFFFFF;
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    border-radius: 8px; /* Slightly refined square */
+    font-size: 20px;
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.header-carousel .owl-nav .owl-prev:hover,
+.header-carousel .owl-nav .owl-next:hover {
+    background: rgba(34, 211, 238, 0.1); /* Subtle cyan background highlight */
+    border-color: #22D3EE; /* Cyan accent border */
+    color: #22D3EE;
+    box-shadow: 0 0 15px rgba(34, 211, 238, 0.4), inset 0 0 8px rgba(34, 211, 238, 0.2); /* Neon glow */
+    transform: translateY(-3px); /* Premium tactile lift */
+}
+
+.page-header {
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    min-height: 50vh;
+    display: flex;
+    align-items: center;
+}
+
+.hero-gradient {
+    /* Directional gradient: fully dark on left for text, fades out to show image focal point on right */
+    background: linear-gradient(to right, rgba(15, 23, 42, 0.98) 0%, rgba(15, 23, 42, 0.75) 45%, rgba(15, 23, 42, 0.1) 100%);
+}
+
+@media (max-width: 991.98px) {
+    .hero-gradient {
+        /* Mobile fallback: uniform contrast gradient for centered text legibility */
+        background: linear-gradient(to right, rgba(15, 23, 42, 0.95) 0%, rgba(15, 23, 42, 0.85) 100%);
+    }
+}
+
+.page-header-inner {
+    background: rgba(15, 23, 43, .7);
+}
+
+.breadcrumb-item + .breadcrumb-item::before {
+    color: var(--light);
+}
+
+
+/*** Section Title ***/
+.section-title {
+    position: relative;
+    display: inline-block;
+    text-transform: uppercase;
+}
+
+.section-title::before {
+    position: absolute;
+    content: "";
+    width: calc(100% + 80px);
+    height: 2px;
+    top: 4px;
+    left: -40px;
+    background: var(--primary);
+    z-index: -1;
+}
+
+.section-title::after {
+    position: absolute;
+    content: "";
+    width: calc(100% + 120px);
+    height: 2px;
+    bottom: 5px;
+    left: -60px;
+    background: var(--primary);
+    z-index: -1;
+}
+
+.section-title.text-start::before {
+    width: calc(100% + 40px);
+    left: 0;
+}
+
+.section-title.text-start::after {
+    width: calc(100% + 60px);
+    left: 0;
+}
+
+
+/*** Service ***/
+.service-item {
+    background: var(--light);
+    transition: .5s;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    border: 1px solid rgba(14, 165, 233, 0.1);
+    padding: 0 !important;
+}
+
+.service-item .service-content {
+    padding: 1.5rem;
+}
+
+.service-item-img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    border-bottom: 3px solid var(--primary);
+}
+
+.service-item * {
+    transition: .5s;
+}
+
+.service-item:hover * {
+    color: var(--light) !important;
+}
+
+
+/*** Categories & Courses ***/
+.category img,
+.course-item img {
+    transition: .5s;
+}
+
+.course-item {
+    padding: 0 !important;
+    overflow: hidden;
+    border: 1px solid rgba(14, 165, 233, 0.1);
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+}
+
+.course-item .course-content {
+    padding: 1.5rem;
+}
+
+.course-img-top {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    border-bottom: 3px solid var(--primary);
+}
+
+
+/*** Team ***/
+.team-item img {
+    transition: .5s;
+}
+
+.team-item:hover img {
+    transform: scale(1.1);
+}
+
+
+/*** Testimonial ***/
+.testimonial-carousel::before {
+    position: absolute;
+    content: "";
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 0;
+    background: linear-gradient(to right, rgba(11, 15, 25, 1) 0%, rgba(11, 15, 25, 0) 100%);
+    z-index: 1;
+}
+
+.testimonial-carousel::after {
+    position: absolute;
+    content: "";
+    top: 0;
+    right: 0;
+    height: 100%;
+    width: 0;
+    background: linear-gradient(to left, rgba(11, 15, 25, 1) 0%, rgba(11, 15, 25, 0) 100%);
+    z-index: 1;
+}
+
+@media (min-width: 768px) {
+    .testimonial-carousel::before,
+    .testimonial-carousel::after {
+        width: 200px;
+    }
+}
+
+@media (min-width: 992px) {
+    .testimonial-carousel::before,
+    .testimonial-carousel::after {
+        width: 300px;
+    }
+}
+
+.testimonial-carousel .owl-item .testimonial-text,
+.testimonial-carousel .owl-item.center .testimonial-text * {
+    transition: .5s;
+}
+
+.testimonial-carousel .owl-item.center .testimonial-text {
+    background: var(--primary) !important;
+}
+
+.testimonial-carousel .owl-item.center .testimonial-text * {
+    color: #FFFFFF !important;
+}
+
+.testimonial-carousel .owl-dots {
+    margin-top: 24px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+}
+
+.testimonial-carousel .owl-dot {
+    position: relative;
+    display: inline-block;
+    margin: 0 5px;
+    width: 15px;
+    height: 15px;
+    border: 1px solid #CCCCCC;
+    transition: .5s;
+}
+
+.testimonial-carousel .owl-dot.active {
+    background: var(--primary);
+    border-color: var(--primary);
+}
+
+
+/*** Footer ***/
+.footer .btn.btn-social {
+    margin-right: 5px;
+    width: 35px;
+    height: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--light);
+    font-weight: normal;
+    border: 1px solid #FFFFFF;
+    border-radius: 35px;
+    transition: .3s;
+}
+
+.footer .btn.btn-social:hover {
+    color: var(--primary);
+}
+
+.footer .btn.btn-link {
+    display: block;
+    margin-bottom: 5px;
+    padding: 0;
+    text-align: left;
+    color: #FFFFFF;
+    font-size: 15px;
+    font-weight: normal;
+    text-transform: capitalize;
+    transition: .3s;
+}
+
+.footer .btn.btn-link::before {
+    position: relative;
+    content: "\f105";
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    margin-right: 10px;
+}
+
+.footer .btn.btn-link:hover {
+    letter-spacing: 1px;
+    box-shadow: none;
+}
+
+.footer .copyright {
+    padding: 25px 0;
+    font-size: 15px;
+    border-top: 1px solid rgba(256, 256, 256, .1);
+}
+
+.footer .copyright a {
+    color: var(--light);
+}
+
+.footer .footer-menu a {
+    margin-right: 15px;
+    padding-right: 15px;
+    border-right: 1px solid rgba(255, 255, 255, .1);
+}
+
+.footer .footer-menu a:last-child {
+    margin-right: 0;
+    padding-right: 0;
+    border-right: none;
+}
+
+/* =========================================
+   CINEMATIC DARK TECH THEME
+   ========================================= */
+
+body {
+    background-color: var(--dark) !important;
+    color: #94a3b8 !important; /* light gray text */
+}
+
+h1, h2, h3, h4, h5, h6, 
+.h1, .h2, .h3, .h4, .h5, .h6,
+.text-dark {
+    color: #f8fafc !important; /* bright white headings */
+}
+
+.text-muted {
+    color: #64748b !important;
+}
+
+/* Navbar */
+.navbar-light {
+    background-color: rgba(11, 15, 25, 0.75) !important;
+}
+.navbar-light .navbar-nav .nav-link {
+    color: #cbd5e1 !important;
+}
+.navbar-light .navbar-nav .nav-link:hover,
+.navbar-light .navbar-nav .nav-link.active {
+    color: var(--primary) !important;
+}
+/* Ensure logo or brand text is white if not image */
+.navbar-brand h1 { color: #fff !important; }
+.navbar-brand i { color: var(--primary) !important; }
+
+/* General Buttons */
+.btn {
+    transition: all 0.3s ease-in-out !important;
+    font-weight: 600;
+}
+.btn-primary {
+    background-color: var(--primary) !important;
+    border-color: var(--primary) !important;
+    color: #fff !important;
+}
+.btn-primary:focus, .btn-primary:active {
+    box-shadow: none !important;
+}
+.btn-primary:hover {
+    background-color: #dc2626 !important;
+    border-color: #dc2626 !important;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(239, 68, 68, 0.4) !important;
+}
+
+/* Hero Section */
+.hero-badge {
+    background-color: var(--primary);
+    color: #fff;
+    padding: 6px 20px;
+    border-radius: 0 20px 20px 0;
+    display: inline-block;
+    font-weight: 700;
+    font-style: italic;
+    font-size: 0.95rem;
+    margin-bottom: 24px;
+    margin-left: -15px; /* Pull left slightly to hug edge if in container, or just 0 */
+    box-shadow: 4px 4px 15px rgba(239, 68, 68, 0.3);
+}
+
+.hero-overlay {
+    background: linear-gradient(to right, rgba(11, 15, 25, 0.98) 0%, rgba(11, 15, 25, 0.75) 50%, rgba(11, 15, 25, 0.2) 100%) !important;
+}
+
+/* Sections */
+.cinematic-bg {
+    background-color: #0B0F19 !important;
+    background-image: linear-gradient(rgba(11, 15, 25, 0.88), rgba(11, 15, 25, 0.95)), url('../img/hero_ai_2_1774331956382.png') !important;
+    background-size: cover !important;
+    background-attachment: fixed !important;
+    background-position: center !important;
+    padding: 100px 0;
+}
+.cinematic-bg-alt {
+    background-color: #0F172A !important;
+    background-image: linear-gradient(rgba(15, 23, 42, 0.92), rgba(15, 23, 42, 0.92)), url('../img/course_cloud_1774332038696.png') !important;
+    background-size: cover !important;
+    background-attachment: fixed !important;
+    background-position: center !important;
+    padding: 100px 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* Cinematic Cards (Courses) */
+.course-item {
+    background-color: var(--light) !important;
+    border: 1px solid rgba(255, 255, 255, 0.05) !important;
+    border-radius: 12px !important;
+    overflow: hidden;
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1) !important;
+    box-shadow: none !important;
+}
+.course-item:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 15px 35px rgba(239, 68, 68, 0.15) !important;
+    border-color: rgba(239, 68, 68, 0.3) !important;
+}
+.course-item .course-content {
+    background-color: var(--light) !important;
+}
+.course-item .course-content * {
+    color: inherit !important;
+}
+.course-item .course-content p {
+    color: #94a3b8 !important;
+}
+.course-img-top {
+    border-bottom: none !important;
+}
+
+/* Industry Projects Icons */
+.service-icon-box {
+    background: rgba(255, 255, 255, 0.02);
+    border-radius: 12px;
+    padding: 35px 20px;
+    text-align: center;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    transition: all 0.3s ease;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.service-icon-box i {
+    color: #cbd5e1;
+    margin-bottom: 20px;
+    transition: all 0.3s ease;
+}
+.service-icon-box h5 {
+    color: #e2e8f0 !important;
+    margin-bottom: 0;
+    transition: all 0.3s ease;
+}
+.service-icon-box:hover {
+    background: rgba(255, 255, 255, 0.04);
+    border-color: rgba(239, 68, 68, 0.4);
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(239, 68, 68, 0.1);
+}
+.service-icon-box:hover i {
+    color: var(--primary) !important;
+    transform: scale(1.15);
+}
+
+/* Footer overrides */
+.footer {
+    background-color: #070a12 !important;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+.footer, .footer p, .footer span {
+    color: #94a3b8 !important;
+}
+.footer a {
+    color: #cbd5e1 !important;
+}
+.footer a:hover {
+    color: var(--primary) !important;
+}
+
+/* Override sections globally */
+.page-header {
+    min-height: 50vh;
+}
+
+/* Fix Section Title Background Cross-Through */
+.cinematic-bg .section-title { background-color: #0B0F19 !important; }
+.cinematic-bg-alt .section-title { background-color: #0F172A !important; }
+
+/* Industry Projects Image Cards */
+.project-img-card {
+    position: relative;
+    border-radius: 12px;
+    overflow: hidden;
+    height: 250px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    border: 1px solid rgba(59, 130, 246, 0.3);
+    box-shadow: 0 4px 15px rgba(59, 130, 246, 0.08); /* Subtle base neon glow */
+    transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+    cursor: pointer;
+    background: #111827;
+}
+.project-img-card img {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+    z-index: 1;
+}
+.project-img-overlay {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.3) 100%);
+    z-index: 2;
+    transition: all 0.4s ease;
+}
+.project-img-card h5 {
+    position: relative;
+    z-index: 3;
+    color: rgba(255, 255, 255, 0.85) !important; /* Slightly dimmed state */
+    margin-bottom: 20px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    transition: all 0.4s ease;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.8);
+}
+
+/* Hover Effects */
+.project-img-card:hover {
+    transform: translateY(-10px); /* Premium lift */
+    border-color: rgba(59, 130, 246, 0.8); /* Brighter border */
+    box-shadow: 0 15px 35px rgba(59, 130, 246, 0.3), 0 0 15px rgba(59, 130, 246, 0.2); /* Stronger glow */
+}
+.project-img-card:hover img {
+    transform: scale(1.1); /* Image zoom */
+}
+.project-img-card:hover .project-img-overlay {
+    /* Darker overlay base with blue tinted top glow */
+    background: linear-gradient(to top, rgba(0,0,0,0.95) 0%, rgba(59, 130, 246, 0.25) 100%);
+}
+.project-img-card:hover h5 {
+    color: #ffffff !important; /* Brighten text */
+    transform: translateY(-5px); /* Lift text */
+    text-shadow: 0 0 12px rgba(59, 130, 246, 0.7), 0 2px 4px rgba(0,0,0,0.6); /* Subtle blue glow */
+}
+
+/* Why Choose Us Hover Reveal Cards */
+.wcu-card {
+    position: relative;
+    background: #111827; /* Dark theme card */
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 12px;
+    padding: 40px 30px;
+    height: 100%;
+    overflow: hidden;
+    transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+    z-index: 1;
+}
+
+/* Base Content Layer */
+.wcu-content {
+    transition: opacity 0.4s ease, transform 0.4s ease;
+    opacity: 1;
+    transform: translateY(0);
+}
+.wcu-content i {
+    color: var(--primary);
+}
+.wcu-content h5 {
+    color: #fff !important;
+}
+.wcu-content p {
+    color: #94a3b8;
+    margin-bottom: 0;
+}
+
+/* Hover Reveal Layer */
+.wcu-overlay {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: linear-gradient(135deg, rgba(220, 38, 38, 0.85) 0%, rgba(11, 15, 25, 0.95) 100%);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: opacity 0.4s ease, transform 0.4s ease;
+    transform: translateY(20px);
+    z-index: 2;
+    padding: 30px;
+    text-align: center;
+}
+.wcu-overlay i {
+    font-size: 3rem;
+    color: #fff !important;
+    margin-bottom: 15px;
+    transform: scale(0.8);
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+.wcu-overlay h4 {
+    color: #fff !important;
+    font-weight: 700;
+    margin: 0;
+    letter-spacing: 1px;
+}
+
+/* Hover State Interactions */
+.wcu-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 35px rgba(239, 68, 68, 0.2);
+    border-color: rgba(239, 68, 68, 0.5);
+}
+.wcu-card:hover .wcu-content {
+    opacity: 0;
+    transform: translateY(-20px);
+}
+.wcu-card:hover .wcu-overlay {
+    opacity: 1;
+    transform: translateY(0);
+}
+/* =========================================
+   Navbar Dropdown Hover Menu (Cinematic)
+   ========================================= */
+
+/* Base styling for the dropdown wrapper container */
+.navbar-light .dropdown-menu {
+    background-color: #111827 !important;
+    border: 1px solid rgba(255, 255, 255, 0.08) !important;
+    border-radius: 10px !important;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6) !important;
+    padding: 12px 8px !important;
+    margin-top: 0 !important;
+    
+    /* Animation base for desktop */
+    display: block !important;
+    visibility: hidden;
+    opacity: 0;
+    transform: translateY(15px);
+    transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1) !important;
+    pointer-events: none;
+}
+
+/* Mobile Slide Down Animation */
+@keyframes slideDownMobile {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Base styling for Mobile */
+@media (max-width: 991.98px) {
+    .navbar-light .dropdown-menu {
+        display: none !important; /* Bootstrap uses JS to toggle display block */
+        visibility: visible;
+        opacity: 1;
+        transform: none;
+        box-shadow: none !important;
+        border: none !important;
+        background-color: #0F172A !important;
+        padding-top: 10px !important;
+        padding-bottom: 10px !important;
+        margin-top: 5px !important;
+        pointer-events: auto;
+    }
+    
+    .navbar-light .dropdown.show .dropdown-menu,
+    .navbar-light .dropdown-menu.show {
+        display: block !important;
+        animation: slideDownMobile 0.3s ease-out forwards;
+    }
+    
+    /* Ensure properly spaced child items for touch accessibility */
+    .navbar-light .dropdown-menu .dropdown-item {
+        color: #E5E7EB !important;
+        padding: 12px 20px !important;
+        margin-bottom: 4px;
+        border-radius: 8px !important;
+    }
+    .navbar-light .dropdown-menu .dropdown-item:hover,
+    .navbar-light .dropdown-menu .dropdown-item:focus {
+        background-color: rgba(255, 255, 255, 0.05) !important;
+        color: var(--primary) !important;
+    }
+
+    /* Mobile JOIN NOW Button Overrides */
+    .navbar-nav .nav-item.dropdown .btn-primary {
+        width: 100% !important;
+        margin-top: 15px !important;
+        padding: 12px !important; /* Larger comfortable tap target on mobile */
+    }
+    .navbar-nav .join-now-menu {
+        width: 100% !important;
+        text-align: center !important;
+    }
+}
+
+/* Hover reveal for Desktop */
+@media (min-width: 992px) {
+    .navbar-light .dropdown:hover .dropdown-menu {
+        visibility: visible;
+        opacity: 1;
+        transform: translateY(0);
+        pointer-events: auto;
+    }
+}
+
+/* Dropdown Links */
+.navbar-light .dropdown-item {
+    color: #cbd5e1 !important;
+    transition: all 0.3s ease !important;
+    border-radius: 6px !important;
+    padding: 10px 18px !important;
+    font-weight: 500;
+    font-size: 0.95rem;
+    background-color: transparent !important;
+    margin-bottom: 2px;
+}
+
+/* Link Hover & Active Effects */
+.navbar-light .dropdown-item:hover,
+.navbar-light .dropdown-item:focus,
+.navbar-light .dropdown-item.active {
+    background-color: #1F2937 !important;
+    color: var(--primary) !important;
+    padding-left: 24px !important; /* Slight slide right */
+}
+
+/* JOIN NOW Button (Navbar Link) Override */
+.navbar-nav .nav-item.dropdown.px-lg-2 .btn-primary {
+    background-color: #EF4444 !important;
+    border: 1px solid #EF4444 !important;
+    color: #FFFFFF !important;
+    transition: all 0.3s ease !important;
+    box-shadow: 0 4px 10px rgba(239, 68, 68, 0.2) !important;
+    
+    /* NEW: Compact Nav Sizing Rules */
+    height: auto !important;
+    padding: 8px 18px !important;
+    font-size: 0.9rem !important;
+    border-radius: 6px !important;
+    display: inline-flex !important;
+    align-items: center;
+    justify-content: center;
+    margin-top: 15px; /* Centers it if navbar is tall */
+    margin-bottom: 15px;
+}
+
+.navbar-nav .nav-item.dropdown.px-lg-2 .btn-primary:hover,
+.navbar-nav .nav-item.dropdown.px-lg-2 .btn-primary[aria-expanded="true"] {
+    background-color: #DC2626 !important;
+    border-color: #DC2626 !important;
+    color: #FFFFFF !important;
+    box-shadow: 0 5px 15px rgba(220, 38, 38, 0.4) !important;
+    transform: translateY(-2px);
+}
+
+/* Join Now Dropdown Items */
+.join-now-menu {
+    background-color: #111827 !important;
+    border: 1px solid rgba(255, 255, 255, 0.08) !important;
+    border-radius: 8px !important;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6) !important;
+}
+.join-now-menu .dropdown-item {
+    color: #cbd5e1 !important;
+    transition: all 0.3s ease !important;
+    border-radius: 6px !important;
+    padding: 10px 18px !important;
+}
+.navbar-light .join-now-menu .dropdown-item:hover,
+.navbar-light .join-now-menu .dropdown-item:focus {
+    background-color: #EF4444 !important;
+    color: #FFFFFF !important;
+}
+/* =========================================
+   UNIVERSAL PREMIUM GLASS GLOW CARDS
+   ========================================= */
+
+/* Overwrite base defaults for all cards */
+.course-item, .project-img-card, .wcu-card, .service-item, .service-icon-box, .team-item, .testimonial-item, .placement-box {
+    position: relative;
+    border-radius: 16px !important;
+    background: rgba(17, 24, 39, 0.4) !important; /* Premium dark glass */
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: none !important;
+    
+    /* Soft base glow + Glass shadow */
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5), 0 0 10px rgba(109, 40, 217, 0.1) !important;
+    
+    transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1) !important;
+    z-index: 1;
+}
+
+/* Hollow Gradient Border (Using masking for true glassmorphism) */
+.course-item::before, .project-img-card::before, .wcu-card::before, .service-item::before, .service-icon-box::before, .team-item::before, .testimonial-item::before, .placement-box::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 16px;
+    padding: 2px; /* Border thickness */
+    background: linear-gradient(135deg, #22D3EE, #3B82F6, #6D28D9);
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask-composite: exclude;
+    pointer-events: none;
+    z-index: 20; /* Keep border above blurred content */
+    opacity: 0.5; /* Subtle default */
+    transition: all 0.4s ease;
+}
+
+/* Inner Subtle Glass Highlight */
+.course-item::after, .project-img-card::after, .wcu-card::after, .service-item::after, .service-icon-box::after, .team-item::after, .testimonial-item::after, .placement-box::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 16px;
+    box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.1); /* Glass top edge shine */
+    pointer-events: none;
+    z-index: 10;
+}
+
+/* Clean background layer for content boxes inside cards */
+.course-item .course-content, .service-item .service-content {
+    background: transparent !important; 
+}
+
+/* Unified Hover Lift & Neon Boost */
+.course-item:hover, .project-img-card:hover, .wcu-card:hover, .service-item:hover, .service-icon-box:hover, .team-item:hover, .testimonial-item:hover, .placement-box:hover {
+    transform: translateY(-8px) scale(1.01) !important;
+    background: rgba(17, 24, 39, 0.6) !important; /* Slightly more solid on hover */
+    
+    /* Vibrant Cyan + Purple + Blue unified glow */
+    box-shadow: 0 0 30px rgba(34, 211, 238, 0.3), 0 20px 40px rgba(109, 40, 217, 0.25), 0 10px 20px rgba(0, 0, 0, 0.6) !important;
+}
+
+/* Brighten Gradient Border on Hover */
+.course-item:hover::before, .project-img-card:hover::before, .wcu-card:hover::before, .service-item:hover::before, .service-icon-box:hover::before, .team-item:hover::before, .testimonial-item:hover::before, .placement-box:hover::before {
+    opacity: 1;
+}
+
+/* Ensure inner imagery conforms perfectly to the dual-layer curved clip */
+.project-img-card img, .project-img-card .project-img-overlay {
+    border-radius: 14px !important;
+}
+
+/* =========================================
+   Mobile Navbar Toggle Button (Hamburger Menu)
+   ========================================= */
+
+.navbar-light .navbar-toggler {
+    background-color: #111827 !important; /* Dark but slightly lighter than navbar */
+    border: 1px solid rgba(34, 211, 238, 0.3) !important; /* Subtle cyan border */
+    border-radius: 6px !important; /* Border radius 6px-8px */
+    padding: 6px 10px !important; /* Compact button, proper padding */
+    transition: all 0.3s ease-in-out !important; /* Smooth transition */
+    box-shadow: 0 0 10px rgba(34, 211, 238, 0.1) !important; /* Subtle initial glow */
+    outline: none !important;
+}
+
+/* Hover Effect */
+.navbar-light .navbar-toggler:hover,
+.navbar-light .navbar-toggler:focus {
+    background-color: #1F2937 !important; /* Slight background change on hover */
+    border-color: #22D3EE !important; /* Brighter cyan border for glow */
+    box-shadow: 0 0 15px rgba(34, 211, 238, 0.5), inset 0 0 8px rgba(34, 211, 238, 0.2) !important; /* Cyan glow effect */
+    transform: translateY(-2px); /* Premium tactile lift */
+}
+
+/* Toggler Icon - White for high contrast */
+.navbar-light .navbar-toggler-icon {
+    background-image: none !important; /* Override Bootstrap SVG */
+    display: inline-block;
+    width: 24px;
+    height: 2px; /* Thinner for modern look */
+    background-color: #FFFFFF !important;
+    position: relative;
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    vertical-align: middle;
+    margin-top: 6px;
+    margin-bottom: 6px;
+    box-shadow: 0 0 4px rgba(255, 255, 255, 0.4); /* Glow on icon itself */
+}
+
+/* Creating the hamburger lines with pseudo elements */
+.navbar-light .navbar-toggler-icon::before,
+.navbar-light .navbar-toggler-icon::after {
+    content: '';
+    position: absolute;
+    width: 24px;
+    height: 2px;
+    background-color: #FFFFFF !important;
+    left: 0;
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    box-shadow: 0 0 4px rgba(255, 255, 255, 0.4);
+}
+
+.navbar-light .navbar-toggler-icon::before {
+    top: -7px;
+}
+
+.navbar-light .navbar-toggler-icon::after {
+    top: 7px;
+}
+
+/* Transform to X when expanded */
+.navbar-light .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
+    background-color: transparent !important;
+    box-shadow: none !important;
+}
+
+.navbar-light .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon::before {
+    top: 0;
+    transform: rotate(45deg);
+}
+
+.navbar-light .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon::after {
+    top: 0;
+    transform: rotate(-45deg);
+}
+
+/* =========================================
+   CONTACT FORM - MODERN AI STYLE
+   ========================================= */
+.form-control {
+    background-color: transparent !important;
+    border: 1px solid rgba(255, 255, 255, 0.2) !important;
+    border-radius: 8px !important;
+    color: #fff !important;
+    height: 55px; /* Minimum height 55px */
+    transition: all 0.3s ease !important;
+    box-shadow: 0 0 8px rgba(255, 255, 255, 0.05) !important; /* Subtle base glow */
+}
+
+/* Ensure padding looks premium */
+.form-floating > .form-control {
+    padding-left: 20px !important;
+    padding-right: 20px !important;
+}
+
+/* Textarea height override */
+textarea.form-control {
+    min-height: 150px !important;
+    height: auto !important;
+}
+
+/* Placeholder styling */
+.form-control::placeholder {
+    color: #9CA3AF !important;
+    opacity: 1;
+}
+
+/* Focus and Hover states */
+.form-control:focus, .form-control:hover {
+    background-color: transparent !important;
+    border-color: #22D3EE !important; /* Cyan accent */
+    box-shadow: 0 0 15px rgba(34, 211, 238, 0.4), inset 0 0 8px rgba(34, 211, 238, 0.1) !important; /* Cyan hover/focus glow */
+    outline: none !important;
+}
+
+/* Floating label adjustments for dark theme transparent backgrounds */
+.form-floating > label {
+    color: #9CA3AF !important;
+    padding-left: 20px !important;
+    transition: all 0.3s ease;
+}
+
+.form-floating > .form-control:focus ~ label,
+.form-floating > .form-control:not(:placeholder-shown) ~ label {
+    color: #22D3EE !important;
+    background-color: #0B0F19 !important; /* Match dark bg to cleanly hide the border behind it */
+    padding: 0 8px !important;
+    transform: scale(0.85) translateY(-1.1rem) translateX(0.5rem) !important;
+    height: auto !important;
+    border-radius: 4px;
+}
+
+
+.mail{
+    cursor: pointer;
+}
+
+/* =========================================
+   GLOBAL FIX: REMOVE DARK GAPS BETWEEN SECTIONS
+   ========================================= */
+
+/* 1. Remove margins: Set margin: 0 for all sections */
+section {
+    margin: 0 !important;
+    
+    /* 2. Fix padding: consistent padding 60px top/bottom */
+    padding: 60px 0 !important;
+    
+    /* 3. Ensure sections fully cover background */
+    background-size: cover !important;
+    background-position: center !important;
+    background-repeat: no-repeat !important;
+    
+    /* 4. Height Fix: Avoid fixed heights, use min-height */
+    height: auto !important;
+    min-height: 50vh !important;
+}
+
+/* 5. Layout Fix: Remove spacing from rows and containers so sections directly connect */
+.container,
+.container-fluid,
+.container-xxl,
+.row {
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+}
+
+/* =========================================
+   HERO / BACKGROUND IMAGE FULL WIDTH FIX
+   ========================================= */
+.page-header,
+.header-carousel,
+.header-carousel .owl-carousel-item,
+section#home,
+section.cinematic-bg,
+section.cinematic-bg-alt {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    
+    background-size: cover !important;
+    background-position: center !important;
+    background-repeat: no-repeat !important;
+    
+    /* Ensure no fixed heights cut the image */
+    height: auto !important;
+    min-height: 50vh;
+}
+
+/* Remove side gaps on outer fluid wrappers containing heroes */
+section.container-fluid.p-0,
+header.container-fluid.p-0 {
+    width: 100% !important;
+    max-width: 100% !important;
+}
+
+/* =========================================
+   TESTIMONIAL CARDS (LIGHT GLASS OVERRIDE)
+   ========================================= */
+
+/* Overwrite universal dark theme card styling specifically for Testimonials */
+.testimonial-carousel .owl-item .testimonial-item {
+    background: rgba(0, 0, 0, 0.4) !important;
+    border-radius: 16px !important;
+    padding: 25px 20px 25px !important; /* Reduced Padding */
+    margin: 30px 15px; /* Added horizontal margin to reduce overall width */
+    opacity: 0.6;
+    filter: blur(1px);
+    transform: scale(0.85);
+    transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1) !important;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.4) !important;
+    border: none !important;
+}
+
+/* Base Side Card Text (Readability setup) */
+.testimonial-carousel .owl-item .testimonial-item h4 {
+    font-size: 1.1rem !important;
+    margin-bottom: 0.5rem !important;
+    color: #E5E7EB !important;
+}
+.testimonial-carousel .owl-item .testimonial-item p {
+    font-size: 0.95rem !important;
+    color: #E5E7EB !important;
+}
+
+/* Custom Profile Circle Base */
+.testimonial-avatar {
+    width: 65px;
+    height: 65px;
+    font-size: 26px;
+    font-weight: bold;
+    border: 3px solid #22D3EE;
+    box-shadow: 0 0 10px rgba(34, 211, 238, 0.4);
+    margin-bottom: 1rem !important;
+}
+
+/* Hover Effect on Side Cards (Scale/Glow) */
+.testimonial-carousel .owl-item .testimonial-item:hover {
+    transform: scale(0.95);
+    opacity: 0.9;
+    filter: blur(0px);
+    box-shadow: 0 10px 30px rgba(255, 255, 255, 0.15) !important;
+}
+
+/* Highlighted Center Card (Red Setup) */
+.testimonial-carousel .owl-item.center .testimonial-item {
+    background: #EF4444 !important;
+    opacity: 1;
+    filter: blur(0px); /* Crystal clear */
+    transform: scale(1.0); /* Dropped from 1.05 to prevent oversizing */
+    box-shadow: 0 15px 35px rgba(239, 68, 68, 0.4) !important;
+    z-index: 10;
+}
+
+/* Center Card Text (Contrast) */
+.testimonial-carousel .owl-item.center .testimonial-item h4,
+.testimonial-carousel .owl-item.center .testimonial-item p {
+    color: #FFFFFF !important;
+}
+
+/* Update Avatar border color when card is active / red */
+.testimonial-carousel .owl-item.center .testimonial-avatar {
+    border-color: #FFFFFF !important;
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.4) !important;
+}
